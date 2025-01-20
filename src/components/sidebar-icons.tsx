@@ -16,7 +16,7 @@ export function SidebarIcons() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
-                    <item.icon className="size-8" />
+                    <item.icon className="size-6" />
                   </TooltipTrigger>
                   <TooltipContent side="right">
                     <p>{item.label}</p>
