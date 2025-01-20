@@ -14,16 +14,16 @@ export const SideBarIconMenu: Navigation[] = [
   {
     icon: FilesIcon,
     label: "Files",
-    url: "",
+    url: "/",
   },
   {
     icon: SearchIcon,
     label: "Search",
-    url: "",
+    url: "search",
   },
   {
     icon: SettingsIcon,
     label: "Configurations",
-    url: "",
+    url: "configurations",
   },
 ];

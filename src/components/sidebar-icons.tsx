@@ -5,6 +5,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Link from "next/link";
 
 export function SidebarIcons() {
   return (
@@ -12,7 +13,7 @@ export function SidebarIcons() {
       <ul className="flex flex-col items-center">
         {SideBarIconMenu.map((item, nav_key) => (
           <li key={`icon-nav-${nav_key}`}>
-            <a href="#" className="block p-2">
+            <Link href={item.url} className="block p-2">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
@@ -23,7 +24,7 @@ export function SidebarIcons() {
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
