@@ -1,4 +1,10 @@
 import { SideBarIconMenu } from "@/defaults/navigation.data";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export function SidebarIcons() {
   return (
@@ -7,7 +13,16 @@ export function SidebarIcons() {
         {SideBarIconMenu.map((item, nav_key) => (
           <li key={`icon-nav-${nav_key}`}>
             <a href="#" className="block p-2">
-              <item.icon className="size-8" />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <item.icon className="size-8" />
+                  </TooltipTrigger>
+                  <TooltipContent side="right">
+                    <p>{item.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </a>
           </li>
         ))}
