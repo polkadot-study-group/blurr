@@ -1,3 +1,4 @@
+import { CodeEditor } from "./code-editor";
 import { TabItem } from "./tab-item";
 
 export function TabContainer() {
@@ -10,12 +11,7 @@ export function TabContainer() {
         <TabItem>File 4</TabItem>
       </div>
       <div className="flex-1 p-2">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-          dolores tempore, accusamus distinctio accusantium, consequuntur vero
-          tempora error eligendi ea, enim aperiam cumque ad? Velit explicabo
-          fugiat sapiente natus ratione!
-        </p>
+        <CodeEditor />
       </div>
     </div>
   );
