@@ -4,22 +4,24 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { Terminal } from "./terminal";
+import { Header } from "./header";
 
 export function Workspace() {
   return (
     <ResizablePanelGroup direction="vertical">
       <ResizablePanel>
-        <div className="p-2">
-          <p>
+        <div>
+          <Header />
+          <div className="p-2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, ad
             blanditiis nostrum cupiditate, omnis possimus iste ea facere quod
             odit pariatur nihil voluptatibus, aspernatur maiores velit? Maxime
             inventore ad minus.
-          </p>
+          </div>
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel className="bg-sidebar">
+      <ResizablePanel className="bg-sidebar" defaultSize={30}>
         <Terminal />
       </ResizablePanel>
     </ResizablePanelGroup>
