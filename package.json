@@ -25,6 +25,7 @@
     "next": "15.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-folder-tree": "^5.1.1",
     "react-resizable-panels": "^2.1.7",
     "react-xtermjs": "^1.0.9",
     "tailwind-merge": "^2.6.0",
