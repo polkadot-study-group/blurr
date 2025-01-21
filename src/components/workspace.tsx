@@ -11,7 +11,7 @@ export function Workspace() {
   return (
     <ResizablePanelGroup direction="vertical">
       <ResizablePanel>
-        <div>
+        <div className="flex flex-col flex-1 h-full">
           <Header />
           <TabContainer />
         </div>

@@ -3,7 +3,7 @@ import { TabItem } from "./tab-item";
 
 export function TabContainer() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col flex-1">
       <div className="flex border-b bg-sidebar">
         <TabItem active>File 1</TabItem>
         <TabItem>File 2</TabItem>
