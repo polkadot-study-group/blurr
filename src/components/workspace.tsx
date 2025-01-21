@@ -3,6 +3,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { Terminal } from "./terminal";
 
 export function Workspace() {
   return (
@@ -18,7 +19,9 @@ export function Workspace() {
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel className="bg-sidebar"></ResizablePanel>
+      <ResizablePanel className="bg-sidebar">
+        <Terminal />
+      </ResizablePanel>
     </ResizablePanelGroup>
   );
 }
