@@ -1,3 +1,4 @@
+"use client";
 import { CodeEditor } from "./code-editor";
 import { TabItem } from "./tab-item";
 

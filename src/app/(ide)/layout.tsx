@@ -1,7 +1,7 @@
 "use client";
 
 import "./../globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { SidebarIcons } from "@/components/sidebar-icons";
 import { Workspace } from "@/components/workspace";
 

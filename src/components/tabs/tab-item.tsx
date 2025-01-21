@@ -1,3 +1,4 @@
+"use client";
 import { FileIcon, XIcon } from "lucide-react";
 import React from "react";
 

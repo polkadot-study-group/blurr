@@ -1,3 +1,4 @@
+"use client";
 import { SideBarIconMenu } from "@/defaults/navigation.data";
 import {
   Tooltip,
