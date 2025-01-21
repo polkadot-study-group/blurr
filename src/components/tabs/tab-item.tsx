@@ -4,7 +4,7 @@ import React from "react";
 interface TabItemProps {
   children: React.ReactNode; // Define the children prop
   active?: boolean;
-  type: "file" | "component";
+  type?: "file" | "component";
 }
 
 export function TabItem({ children, active, type = "file" }: TabItemProps) {
