@@ -4,12 +4,12 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-// import { Terminal } from "./terminal";
+import Terminal from "./terminal";
 import { Header } from "./header";
 import { TabContainer } from "./tabs/tab-container";
 import dynamic from "next/dynamic";
 
-const Terminal = dynamic(() => import("./terminal"), { ssr: false });
+// const Terminal = dynamic(() => import("./terminal"), { ssr: false });
 
 export function Workspace() {
   return (
