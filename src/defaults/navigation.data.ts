@@ -19,11 +19,11 @@ export const SideBarIconMenu: Navigation[] = [
   {
     icon: SearchIcon,
     label: "Search",
-    url: "search",
+    url: "/search",
   },
   {
     icon: SettingsIcon,
     label: "Configurations",
-    url: "configurations",
+    url: "/configurations",
   },
 ];
