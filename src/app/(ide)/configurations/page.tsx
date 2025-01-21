@@ -13,10 +13,10 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 
-export function SearchSidebar() {
+export default function Configurations() {
   return (
     <Sidebar className="pl-12">
-      <SidebarHeader>File Explorer</SidebarHeader>
+      <SidebarHeader>Configurations</SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Workspaces</SidebarGroupLabel>
