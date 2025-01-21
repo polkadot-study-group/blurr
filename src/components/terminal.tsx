@@ -4,7 +4,7 @@ import { useXTerm } from "react-xtermjs";
 import { FitAddon } from "xterm-addon-fit";
 import { useEffect } from "react";
 
-export function Terminal() {
+export default function Terminal() {
   const { instance, ref } = useXTerm();
   const fitAddon = new FitAddon();
   //   const [command, setCommand] = useState("");
