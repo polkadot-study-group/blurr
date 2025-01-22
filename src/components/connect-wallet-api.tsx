@@ -10,13 +10,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { ethers } from "ethers";
+import { useToast } from "@/hooks/use-toast";
 
-export function ConnectWallet2() {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+export function ConnectWalletAPI() {
+  const { toast } = useToast();
   const [defaultAccount, setDefaultAccount] = useState<string | null>(null);
   const [userBalance, setUserBalance] = useState<string | null>(null);
-  const [connectionButtonText, setConnectionButtonText] =
-    useState("Connect Wallet");
 
   const wallet = new Wallet();
 
@@ -28,7 +28,11 @@ export function ConnectWallet2() {
       console.log(accounts);
       accountChangeHandler(accounts.data[0]);
     } else {
-      setErrorMessage(accounts.message);
+      toast({
+        title: "Connection Error",
+        description: accounts.message,
+        variant: "destructive",
+      });
     }
   };
 
@@ -42,7 +46,13 @@ export function ConnectWallet2() {
     wallet.getUserBalance(address).then((result: WalletAPIUserBalance) => {
       if (result.status == "success" && result.data) {
         console.log("balance", result.data);
-        setUserBalance(result.data);
+        setUserBalance(ethers.formatEther(result.data));
+      } else {
+        toast({
+          title: "Connection Error",
+          description: result.message,
+          variant: "destructive",
+        });
       }
     });
   };

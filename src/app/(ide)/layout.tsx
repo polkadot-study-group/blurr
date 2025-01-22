@@ -4,6 +4,7 @@ import "./../globals.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { SidebarIcons } from "@/components/sidebar-icons";
 import { Workspace } from "@/components/workspace";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function RootLayout({
   children,
@@ -24,6 +25,7 @@ export default function RootLayout({
             <Workspace />
           </main>
         </SidebarProvider>
+        <Toaster />
       </body>
     </html>
   );
