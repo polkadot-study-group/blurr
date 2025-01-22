@@ -14,9 +14,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import FolderTree, { NodeData } from "react-folder-tree";
+import { NodeData } from "react-folder-tree";
 import { SampleFileTreeData } from "@/defaults/sample-files.data";
 import "react-folder-tree/dist/style.css";
+import dynamic from "next/dynamic";
+
+const FolderTree = dynamic(() => import("react-folder-tree"), { ssr: false });
 
 export default function Home() {
   interface TreeEventProps {

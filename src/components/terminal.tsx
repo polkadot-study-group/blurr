@@ -3,8 +3,18 @@
 import { useXTerm } from "react-xtermjs";
 import { FitAddon } from "xterm-addon-fit";
 import { useEffect } from "react";
+// import { Terminal } from "xterm";
 
-export default function Terminal() {
+export default function TerminalComponent() {
+  //   useEffect(() => {
+  //     const terminalElement = document.getElementById("terminal");
+
+  //     if (terminalElement) {
+  //       const term = new Terminal();
+  //       term.open(terminalElement);
+  //       term.write("test");
+  //     }
+  //   }, []);
   const { instance, ref } = useXTerm();
   const fitAddon = new FitAddon();
   //   const [command, setCommand] = useState("");
@@ -73,6 +83,7 @@ export default function Terminal() {
   }
 
   return (
+    // <div id="terminal" className="h-full w-full p-2"></div>
     <div
       ref={ref}
       style={{ height: "100%", width: "100%" }}
