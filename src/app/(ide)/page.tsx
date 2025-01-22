@@ -15,12 +15,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import FolderTree from "react-folder-tree";
+import FolderTree, { NodeData } from "react-folder-tree";
 import { SampleFileTreeData } from "@/defaults/sample-files.data";
 import "react-folder-tree/dist/style.css";
 
 export default function Home() {
-  const handleTreeNodeClick = ({ defaultOnClick, nodeData }) => {
+  interface TreeEventProps {
+    defaultOnClick: any;
+    nodeData: NodeData;
+  }
+
+  const handleTreeNodeClick = ({
+    defaultOnClick,
+    nodeData,
+  }: TreeEventProps) => {
     defaultOnClick();
     console.log(nodeData);
   };
