@@ -1,3 +1,4 @@
+// base from https://www.youtube.com/watch?v=uWeK30vg35c
 type status_enum = "success" | "error";
 
 export interface WalletAPIRequestAccountsResult {
