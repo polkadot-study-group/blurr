@@ -7,7 +7,7 @@ import {
 import Terminal from "./terminal";
 import { Header } from "./header";
 import { TabContainer } from "./tabs/tab-container";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
 // const Terminal = dynamic(() => import("./terminal"), { ssr: false });
 

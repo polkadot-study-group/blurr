@@ -5,7 +5,6 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
 } from "@/components/ui/sidebar";
 import {
@@ -21,7 +20,7 @@ import "react-folder-tree/dist/style.css";
 
 export default function Home() {
   interface TreeEventProps {
-    defaultOnClick: any;
+    defaultOnClick: () => void;
     nodeData: NodeData;
   }
 

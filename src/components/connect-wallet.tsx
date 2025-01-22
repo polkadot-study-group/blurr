@@ -4,11 +4,6 @@ import metamaskSDK from "@web3-onboard/metamask";
 import { init, useConnectWallet } from "@web3-onboard/react";
 import { Button } from "./ui/button";
 
-interface RPCError {
-  code: number;
-  message: string;
-}
-
 const chains = [
   {
     id: "0x1",
@@ -114,66 +109,6 @@ init({
 
 function ConnectWallet() {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
-
-  const handleTestSign = async () => {
-    console.log(`TODO: test sign`);
-    if (!wallet) {
-      console.error(`ethersProvider is undefined`);
-      return;
-    }
-
-    try {
-      const result = await wallet.provider.request({
-        method: "personal_sign",
-        params: ["hello world", wallet.accounts?.[0].address],
-      });
-      console.log(`result: `, result);
-    } catch (error) {
-      console.error(`error: `, error);
-    }
-  };
-
-  const addEthereumChain = async () => {
-    wallet?.provider
-      .request({
-        method: "wallet_addEthereumChain",
-        params: [
-          {
-            chainId: "0x89",
-            chainName: "Polygon",
-            blockExplorerUrls: ["https://polygonscan.com"],
-            nativeCurrency: { symbol: "MATIC", decimals: 18 },
-            rpcUrls: ["https://polygon-rpc.com/"],
-          },
-        ],
-      })
-      .then(() => {
-        const confirmation = document.getElementById("confirmation");
-        confirmation!.style.display = "block";
-        confirmation!.innerText = "Polygon has been added to MetaMask.";
-      })
-      .catch((error: unknown) => {
-        console.log(`error: `, error);
-      });
-  };
-
-  const switchChain = async (hexChainId: string) => {
-    try {
-      const result = await wallet?.provider.request({
-        method: "wallet_switchEthereumChain",
-        params: [{ chainId: hexChainId }], // chainId must be in hexadecimal numbers
-      });
-      console.log(`result: `, result);
-    } catch (err: unknown) {
-      const error = err as RPCError;
-      console.log(typeof error);
-      console.log(error);
-      if (error.code === -32603 || error.code === 4902) {
-        const confirmation = document.getElementById("confirmation");
-        confirmation!.style.display = "block";
-      }
-    }
-  };
 
   return (
     // <div>
