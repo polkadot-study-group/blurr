@@ -6,19 +6,19 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Button } from "../ui/button";
 
 export function SidebarIcons() {
   const pathname = usePathname();
 
   return (
-    <div className="fixed top-0 h-full left-0 w-12 z-20 border-r flex flex-col bg-muted">
+    <div className="w-12 z-20 h-full border-r flex flex-col bg-muted">
       <ul className="flex flex-col items-center">
         {SideBarIconMenu.map((item, nav_key) => (
           <li key={`icon-nav-${nav_key}`} className="w-full">
-            <Link
-              href={item.url}
+            <a
+              href="#"
               className={`flex items-center justify-center p-2 w-full relative ${
                 pathname == item.url && "bg-accent"
               }`}
@@ -36,7 +36,7 @@ export function SidebarIcons() {
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-            </Link>
+            </a>
           </li>
         ))}
       </ul>

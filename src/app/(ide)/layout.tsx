@@ -1,10 +1,9 @@
 "use client";
 
 import "./../globals.css";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { SidebarIcons } from "@/components/sidebar-icons";
 import { Workspace } from "@/components/workspace";
 import { Toaster } from "@/components/ui/toaster";
+import { MainSidebar } from "@/components/sidebar/main-sidebar";
 
 export default function RootLayout({
   children,
@@ -14,17 +13,12 @@ export default function RootLayout({
   return (
     <html lang="en-US">
       <body>
-        <SidebarIcons />
-        <SidebarProvider className="w-full">
-          {children}
-
-          <main className="flex-1">
-            {/* <div className="flex justify-end">
-              <SidebarTrigger />
-            </div> */}
+        <div className="flex h-screen w-screen">
+          <MainSidebar />
+          <main className="flex-1 pl-80">
             <Workspace />
           </main>
-        </SidebarProvider>
+        </div>
         <Toaster />
       </body>
     </html>
