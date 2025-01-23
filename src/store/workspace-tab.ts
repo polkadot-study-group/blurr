@@ -25,8 +25,12 @@ export const workspaceTabSlice = createSlice({
     addTab: (state, action) => {
       state.value.push(action.payload);
     },
+    removeTab: (state, action) => {
+      state.value.splice(action.payload, 1);
+    },
   },
 });
 
-export const { setTabs, addTab, setActive } = workspaceTabSlice.actions;
+export const { setTabs, addTab, setActive, removeTab } =
+  workspaceTabSlice.actions;
 export default workspaceTabSlice.reducer;
