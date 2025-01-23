@@ -1,10 +1,10 @@
 import { combineReducers, createStore } from "redux";
 import tabPageReducer from "./tabpage/tabpage-reducer";
-import workspaceTabReducer from "./workspace_tabs/workspace-tab-reducer";
+import workspaceTabsReducer from "./workspace-tab";
 
 const rootReducer = combineReducers({
   currentTabPage: tabPageReducer,
-  workspaceTabs: workspaceTabReducer,
+  workspaceTabs: workspaceTabsReducer,
 });
 
 export const store = createStore(rootReducer);

@@ -9,14 +9,11 @@ export function CodeEditor() {
 
   return (
     <>
-      {tabs.map((tab: WorkspaceTabModel) => (
-        <Editor
-          key={`view-${tab.type}-${tab.label}-${tab.key}`}
-          height="100%"
-          defaultLanguage="html"
-          defaultValue={tab.content}
-        />
-      ))}
+      <Editor
+        height="100%"
+        defaultLanguage="html"
+        value={tabs.active.content}
+      />
     </>
   );
 }

@@ -8,4 +8,11 @@ export const defaultTab: WorkspaceTabModel[] = [
     type: "file",
     content: "Welcome to Blurr",
   },
+  {
+    key: "other",
+    label: "Other File",
+    is_new: false,
+    type: "file",
+    content: "Welcome to Blurr 2",
+  },
 ];
