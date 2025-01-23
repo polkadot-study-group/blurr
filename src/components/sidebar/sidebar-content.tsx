@@ -1,3 +1,13 @@
-export function SidebarContent({ children }: { children: React.ReactNode }) {
-  return <div className="h-screen flex-1 bg-sidebar border-r">{children}</div>;
+import { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
+
+export function SidebarContent() {
+  const currentTabPage = useSelector(
+    (state: RootState) => state.currentTabPage
+  );
+  return (
+    <div className="h-screen flex-1 bg-sidebar border-r">
+      <currentTabPage.content />
+    </div>
+  );
 }

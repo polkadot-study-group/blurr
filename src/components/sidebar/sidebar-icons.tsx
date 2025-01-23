@@ -1,5 +1,5 @@
 "use client";
-import { SideBarIconMenu } from "@/defaults/navigation.data";
+import { Navigation, SideBarIconMenu } from "@/defaults/navigation.data";
 import {
   Tooltip,
   TooltipContent,
@@ -8,9 +8,22 @@ import {
 } from "@/components/ui/tooltip";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import { changeActivePageTab } from "@/store/tabpage/tabpage-action";
 
 export function SidebarIcons() {
-  const pathname = usePathname();
+  const dispatch = useDispatch();
+  const currentTabPage = useSelector(
+    (state: RootState) => state.currentTabPage
+  );
+
+  const handleChangeTab = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    item: Navigation
+  ) => {
+    dispatch(changeActivePageTab(item));
+  };
 
   return (
     <div className="w-12 z-20 h-full border-r flex flex-col bg-muted">
@@ -20,10 +33,11 @@ export function SidebarIcons() {
             <a
               href="#"
               className={`flex items-center justify-center p-2 w-full relative ${
-                pathname == item.url && "bg-accent"
+                currentTabPage.key == item.key && "bg-accent"
               }`}
+              onClick={(e) => handleChangeTab(e, item)}
             >
-              {pathname == item.url && (
+              {currentTabPage.key == item.key && (
                 <div className="absolute top-0 left-0 w-[3px] bg-primary h-full"></div>
               )}
               <TooltipProvider>
