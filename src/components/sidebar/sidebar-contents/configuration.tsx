@@ -27,7 +27,7 @@ export default function Configuration() {
           </Select>
         </div>
       </div>
-      <ScrollArea className="flex-1 w-full">
+      <ScrollArea className="flex-1 w-full p-2">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
         consequuntur illo nihil est accusantium fugit veritatis optio officia
         provident. Perferendis dolor rem veniam at accusamus sit eos ipsam
