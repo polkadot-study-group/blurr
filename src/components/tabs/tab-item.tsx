@@ -11,7 +11,7 @@ interface TabItemProps {
 export function TabItem({ children, active, type = "file" }: TabItemProps) {
   return (
     <div
-      className={`flex items-center gap-2 border-r px-2 py-1 text-sm cursor-pointer group bg-muted ${
+      className={`flex items-center gap-2 border-r px-2 py-1 h-full text-sm cursor-pointer group bg-muted ${
         active ? "opacity-100 font-bold" : "opacity-80"
       }`}
     >
