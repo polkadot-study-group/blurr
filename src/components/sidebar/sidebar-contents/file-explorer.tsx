@@ -1,13 +1,5 @@
 "use client";
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarHeader,
-} from "@/components/ui/sidebar";
-import {
   Select,
   SelectContent,
   SelectItem,

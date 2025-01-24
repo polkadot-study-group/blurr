@@ -7,11 +7,7 @@ import { MainSidebar } from "@/components/sidebar/main-sidebar";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout() {
   return (
     <html lang="en-US">
       <body>

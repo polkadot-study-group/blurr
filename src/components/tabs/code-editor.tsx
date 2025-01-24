@@ -1,5 +1,4 @@
 "use client";
-import { WorkspaceTabModel } from "@/models/workspace-tabs.mode";
 import { RootState } from "@/store/store";
 import Editor from "@monaco-editor/react";
 import { useSelector } from "react-redux";

@@ -1,5 +1,4 @@
 import { SidebarContent } from "./sidebar-content";
-import FileExplorer from "./sidebar-contents/file-explorer";
 import { SidebarIcons } from "./sidebar-icons";
 
 export function MainSidebar() {
