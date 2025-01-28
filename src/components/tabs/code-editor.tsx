@@ -29,7 +29,7 @@ export function CodeEditor() {
     <>
       <Editor
         height="100%"
-        defaultLanguage="html"
+        defaultLanguage="sol"
         value={tabs.active.content}
         theme={currTheme}
       />
