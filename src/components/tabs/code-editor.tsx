@@ -26,13 +26,11 @@ export function CodeEditor() {
   }, [theme, systemTheme, monaco]);
 
   return (
-    <>
-      <Editor
-        height="100%"
-        defaultLanguage="sol"
-        value={tabs.active.content}
-        theme={currTheme}
-      />
-    </>
+    <Editor
+      height="100%"
+      defaultLanguage="sol"
+      value={tabs.active.content}
+      theme={currTheme}
+    />
   );
 }

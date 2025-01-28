@@ -23,7 +23,7 @@ export function TabContainer() {
           </TabItem>
         ))}
       </div>
-      <div className="flex-1 p-2">
+      <div className="flex-1">
         <CodeEditor />
       </div>
     </div>
