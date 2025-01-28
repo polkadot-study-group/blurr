@@ -23,7 +23,7 @@ export function CodeEditor() {
     }
     setCurrTheme(selectedTheme);
     monaco?.editor.setTheme(selectedTheme);
-  }, [theme, systemTheme]);
+  }, [theme, systemTheme, monaco]);
 
   return (
     <>

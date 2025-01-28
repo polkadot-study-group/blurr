@@ -46,7 +46,7 @@ export default function TerminalComponent() {
         cursor: cursorColor,
       };
     }
-  }, [theme, systemTheme]);
+  }, [theme, systemTheme, instance]);
 
   useEffect(() => {
     // Load the fit addon

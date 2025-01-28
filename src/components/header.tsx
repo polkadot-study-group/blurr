@@ -2,7 +2,7 @@
 import { Input } from "@/components/ui/input";
 // import ConnectWallet from "./connect-wallet";
 import { ConnectWalletAPI } from "./connect-wallet-api";
-import { Moon, MoonIcon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
