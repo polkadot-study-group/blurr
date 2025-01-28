@@ -3,6 +3,7 @@
 import { useXTerm } from "react-xtermjs";
 import { FitAddon } from "xterm-addon-fit";
 import { useEffect } from "react";
+import { useTheme } from "next-themes";
 // import { Terminal } from "xterm";
 
 export default function TerminalComponent() {
@@ -15,10 +16,37 @@ export default function TerminalComponent() {
   //       term.write("test");
   //     }
   //   }, []);
+  const { theme, systemTheme } = useTheme();
   const { instance, ref } = useXTerm();
   const fitAddon = new FitAddon();
   //   const [command, setCommand] = useState("");
   let command: string = "";
+
+  useEffect(() => {
+    let backgroundColor = "#fafafa";
+    let foregroundColor = "#333";
+    let cursorColor = "#333";
+
+    if (theme === "system") {
+      if (systemTheme === "dark") {
+        backgroundColor = "#18181b";
+        foregroundColor = "#fff";
+        cursorColor = "#fff";
+      }
+    } else if (theme === "dark") {
+      backgroundColor = "#18181b";
+      foregroundColor = "#fff";
+      cursorColor = "#fff";
+    }
+
+    if (instance?.options) {
+      instance.options.theme = {
+        background: backgroundColor,
+        foreground: foregroundColor,
+        cursor: cursorColor,
+      };
+    }
+  }, [theme, systemTheme]);
 
   useEffect(() => {
     // Load the fit addon
@@ -27,11 +55,29 @@ export default function TerminalComponent() {
     // Ensure instance and options are defined before setting the theme
     if (instance?.options) {
       instance.options.cursorBlink = true;
-      instance.options.theme = {
-        background: "#fafafa",
-        foreground: "#333",
-        cursor: "#333",
-      };
+      let backgroundColor = "#fafafa";
+      let foregroundColor = "#333";
+      let cursorColor = "#333";
+
+      if (theme === "system") {
+        if (systemTheme === "dark") {
+          backgroundColor = "#18181b";
+          foregroundColor = "#fff";
+          cursorColor = "#fff";
+        }
+      } else if (theme === "dark") {
+        backgroundColor = "#18181b";
+        foregroundColor = "#fff";
+        cursorColor = "#fff";
+      }
+
+      if (instance?.options) {
+        instance.options.theme = {
+          background: backgroundColor,
+          foreground: foregroundColor,
+          cursor: cursorColor,
+        };
+      }
     }
 
     const handleResize = () => fitAddon.fit();
