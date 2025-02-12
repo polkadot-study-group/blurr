@@ -11,6 +11,8 @@ import { NodeData } from "react-folder-tree";
 import { SampleFileTreeData } from "@/defaults/sample-files.data";
 import "react-folder-tree/dist/style.css";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import { getFilesRecursive } from "@/services/file.service";
 
 const FolderTree = dynamic(() => import("react-folder-tree"), { ssr: false });
 
@@ -19,6 +21,20 @@ export default function FileExplorer() {
     defaultOnClick: () => void;
     nodeData: NodeData;
   }
+
+  const [treeData, setTreeData] = useState<NodeData | null>(null);
+
+  useEffect(() => {
+    getFilesRecursive()
+      .then((data: NodeData | null) => {
+        if (data) {
+          setTreeData(data);
+        }
+      })
+      .catch(() => {
+        console.log("error");
+      });
+  }, []);
 
   const handleTreeNodeClick = ({
     defaultOnClick,
@@ -47,12 +63,14 @@ export default function FileExplorer() {
       </div>
       <ScrollArea className="flex-1 w-full">
         <div className="p-2 text-sm">
-          <FolderTree
-            data={SampleFileTreeData}
-            showCheckbox={false}
-            readOnly
-            onNameClick={handleTreeNodeClick}
-          />
+          {treeData && (
+            <FolderTree
+              data={treeData}
+              showCheckbox={false}
+              readOnly
+              onNameClick={handleTreeNodeClick}
+            />
+          )}
         </div>
       </ScrollArea>
     </div>
