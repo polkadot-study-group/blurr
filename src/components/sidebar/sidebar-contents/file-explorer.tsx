@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/select";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { NodeData } from "react-folder-tree";
-import { SampleFileTreeData } from "@/defaults/sample-files.data";
 import "react-folder-tree/dist/style.css";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
