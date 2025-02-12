@@ -1,4 +1,4 @@
-import { WorkspaceTabModel } from "@/models/workspace-tabs.mode";
+import { WorkspaceTabModel } from "@/models/workspace-tabs.model";
 
 export const defaultTab: WorkspaceTabModel[] = [
   {

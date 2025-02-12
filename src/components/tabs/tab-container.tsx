@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CodeEditor } from "./code-editor";
 import { TabItem } from "./tab-item";
 import { RootState } from "@/store/store";
-import { WorkspaceTabModel } from "@/models/workspace-tabs.mode";
+import { WorkspaceTabModel } from "@/models/workspace-tabs.model";
 import { removeTab, setActive } from "@/store/workspace-tab";
 
 export function TabContainer() {

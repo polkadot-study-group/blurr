@@ -1,5 +1,5 @@
 import { defaultTab } from "@/defaults/default-tab.data";
-import { WorkspaceTabModel } from "@/models/workspace-tabs.mode";
+import { WorkspaceTabModel } from "@/models/workspace-tabs.model";
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface WorkspaceTabState {
