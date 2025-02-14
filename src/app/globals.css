@@ -88,6 +88,20 @@ body {
   }
 }
 
-.FolderTree .TreeNode {
+.FolderTree .TreeNode,
+.editableNameContainer .editingName {
   display: flex;
+  align-items: center;
+}
+
+.TreeNode .TreeNodeToolBar,
+.editableNameToolbar {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.TreeNode .TreeNodeToolBar * {
+  width: 16px;
+  height: 16px;
 }
