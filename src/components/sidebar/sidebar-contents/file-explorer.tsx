@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { getFilesRecursive } from "@/services/file.service";
 import { SampleFileTreeData } from "@/defaults/sample-files.data";
+import { setTree } from "@/store/directory-tree";
 import {
   Delete,
   Edit,
@@ -24,6 +25,9 @@ import {
   TrashIcon,
   X,
 } from "lucide-react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import { useDispatch } from "react-redux";
 
 const FolderTree = dynamic(() => import("react-folder-tree"), { ssr: false });
 
@@ -33,13 +37,14 @@ export default function FileExplorer() {
     nodeData: NodeData;
   }
 
-  const [treeData, setTreeData] = useState<NodeData | null>(null);
+  const dispatch = useDispatch();
+  const tree = useSelector((state: RootState) => state.directoryTree);
 
   useEffect(() => {
     getFilesRecursive()
       .then((data: NodeData | null) => {
         if (data) {
-          setTreeData(data);
+          dispatch(setTree(data));
         }
       })
       .catch(() => {
@@ -96,7 +101,8 @@ export default function FileExplorer() {
 
   const DeleteIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
     const { path, name, checked, isOpen, ...restData } = nodeData;
-    const handleClick = () => {
+    const handleClick = (e) => {
+      console.log(e, nodeData);
       alert("delete icon clicked");
       defaultOnClick();
     };
@@ -133,9 +139,9 @@ export default function FileExplorer() {
       </div>
       <ScrollArea className="flex-1 w-full">
         <div className="p-2 text-sm">
-          {treeData && (
+          {tree.data && (
             <FolderTree
-              data={treeData}
+              data={tree.data}
               showCheckbox={false}
               onNameClick={handleTreeNodeClick}
               iconComponents={{
@@ -143,7 +149,7 @@ export default function FileExplorer() {
                 FolderIcon,
                 FileIcon,
                 // CancelIcon,
-                // DeleteIcon,
+                DeleteIcon,
                 // EditIcon
                 /* other custom icons ... */
               }}
