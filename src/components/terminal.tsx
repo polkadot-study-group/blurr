@@ -2,8 +2,9 @@
 
 import { useXTerm } from "react-xtermjs";
 import { FitAddon } from "xterm-addon-fit";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
+import WebSocketService from "@/services/websocket";
 // import { Terminal } from "xterm";
 
 export default function TerminalComponent() {
@@ -21,6 +22,47 @@ export default function TerminalComponent() {
   const fitAddon = new FitAddon();
   //   const [command, setCommand] = useState("");
   let command: string = "";
+
+  const socketRef = useRef<WebSocketService | null>(null);
+  const terminalRef = useRef(instance);
+
+  useEffect(() => {
+    terminalRef.current = instance;
+  }, [instance]);
+
+  useEffect(() => {
+    const socket = new WebSocketService();
+
+    socket.setOnMessage((message) => {
+      const terminal = terminalRef.current;
+
+      if (!terminal) return;
+
+      try {
+        const data = JSON.parse(message);
+
+        terminal.writeln(""); // Add a new line for spacing
+
+        Object.entries(data).forEach(([key, value]) => {
+          terminal.writeln(`${key}: ${value}`);
+        });
+
+        terminal.writeln(""); // Add a blank line after message for readability
+      } catch (err) {
+        terminal.writeln("Error parsing message:");
+        terminal.writeln(message);
+      }
+    });
+
+    socket.connect();
+    socketRef.current = socket;
+
+    return () => {
+      if (socketRef.current?.socket) {
+        socketRef.current.socket.close();
+      }
+    };
+  }, []);
 
   useEffect(() => {
     let backgroundColor = "#fafafa";
@@ -124,7 +166,14 @@ export default function TerminalComponent() {
     if (cmd.trim() === "clear") {
       instance?.clear(); // Clear terminal
     } else {
-      instance?.writeln(`You entered: ${cmd}`); // Echo command
+      // instance?.writeln(`You entered: ${cmd}`); // Echo command
+      const params = { command: cmd };
+
+      if (socketRef.current) {
+        socketRef.current.sendMessage(JSON.stringify(params));
+      } else {
+        console.error("No WebSocket connection.");
+      }
     }
   }
 
