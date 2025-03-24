@@ -1,4 +1,4 @@
-import { defaultTab } from "@/defaults/default-tab.data";
+// import { defaultTab } from "@/defaults/default-tab.data";
 import { createSlice } from "@reduxjs/toolkit";
 import { NodeData } from "react-folder-tree";
 
@@ -18,15 +18,19 @@ export const DirectoryTreeSlice = createSlice({
       state.data = action.payload;
     },
     addFolder: (state, action) => {
+      console.log(state, action);
       //   state.value.push(action.payload);
     },
     removeFolder: (state, action) => {
+      console.log(state, action);
       //   state.value.splice(action.payload, 1);
     },
     addFile: (state, action) => {
+      console.log(state, action);
       //   state.value.push(action.payload);
     },
     removeFile: (state, action) => {
+      console.log(state, action);
       //   state.value.push(action.payload);
     },
   },

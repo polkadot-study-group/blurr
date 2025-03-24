@@ -6,25 +6,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { NodeData } from "react-folder-tree";
 import "react-folder-tree/dist/style.css";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getFilesRecursive } from "@/services/file.service";
-import { SampleFileTreeData } from "@/defaults/sample-files.data";
 import { setTree } from "@/store/directory-tree";
-import {
-  Delete,
-  Edit,
-  File,
-  Folder,
-  FolderOpen,
-  Home,
-  PlusIcon,
-  TrashIcon,
-  X,
-} from "lucide-react";
+import { File, Folder, FolderOpen, TrashIcon } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { useDispatch } from "react-redux";
@@ -62,6 +50,7 @@ export default function FileExplorer() {
 
   const FolderIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
     const { path, name, checked, isOpen, ...restData } = nodeData;
+    console.log(path, name, checked, isOpen, restData);
     const handleClick = () => {
       defaultOnClick();
     };
@@ -71,6 +60,7 @@ export default function FileExplorer() {
 
   const FolderOpenIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
     const { path, name, checked, isOpen, ...restData } = nodeData;
+    console.log(path, name, checked, isOpen, restData);
     const handleClick = () => {
       // doSthBad({ path, name, checked, isOpen, ...restData });
       defaultOnClick();
@@ -81,6 +71,7 @@ export default function FileExplorer() {
 
   const FileIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
     const { path, name, checked, isOpen, ...restData } = nodeData;
+    console.log(path, name, checked, isOpen, restData);
     const handleClick = () => {
       defaultOnClick();
     };
@@ -101,6 +92,8 @@ export default function FileExplorer() {
 
   const DeleteIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
     const { path, name, checked, isOpen, ...restData } = nodeData;
+    console.log(path, name, checked, isOpen, restData);
+    // @ts-expect-error: acept any type for e args
     const handleClick = (e) => {
       console.log(e, nodeData);
       alert("delete icon clicked");
@@ -110,15 +103,16 @@ export default function FileExplorer() {
     return <TrashIcon className="size-4" onClick={handleClick} />;
   };
 
-  const CancelIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
-    const { path, name, checked, isOpen, ...restData } = nodeData;
-    const handleClick = () => {
-      alert("Cancel icon clicked");
-      defaultOnClick();
-    };
+  // const CancelIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
+  //   const { path, name, checked, isOpen, ...restData } = nodeData;
+  //   console.log(path, name, checked, isOpen, restData);
+  //   const handleClick = () => {
+  //     alert("Cancel icon clicked");
+  //     defaultOnClick();
+  //   };
 
-    return <X className="size-4" onClick={handleClick} />;
-  };
+  //   return <X className="size-4" onClick={handleClick} />;
+  // };
 
   return (
     <div className="flex flex-col h-screen">
@@ -145,10 +139,14 @@ export default function FileExplorer() {
               showCheckbox={false}
               onNameClick={handleTreeNodeClick}
               iconComponents={{
+                // @ts-expect-error: icon component props mismatch, works as intended
                 FolderOpenIcon,
+                // @ts-expect-error: icon component props mismatch, works as intended
                 FolderIcon,
+                // @ts-expect-error: icon component props mismatch, works as intended
                 FileIcon,
                 // CancelIcon,
+                // @ts-expect-error: icon component props mismatch, works as intended
                 DeleteIcon,
                 // EditIcon
                 /* other custom icons ... */

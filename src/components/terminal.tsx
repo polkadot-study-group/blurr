@@ -49,6 +49,7 @@ export default function TerminalComponent() {
 
         terminal.writeln(""); // Add a blank line after message for readability
       } catch (err) {
+        console.log(err);
         terminal.writeln("Error parsing message:");
         terminal.writeln(message);
       }
