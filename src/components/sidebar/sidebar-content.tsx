@@ -6,7 +6,7 @@ export function SidebarContent() {
     (state: RootState) => state.currentTabPage
   );
   return (
-    <div className="h-screen flex-1 bg-sidebar border-r">
+    <div className="h-screen flex-1 bg-sidebar border-r w-full">
       <currentTabPage.content />
     </div>
   );

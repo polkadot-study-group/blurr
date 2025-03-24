@@ -137,7 +137,7 @@ export default function FileExplorer() {
           </Select>
         </div>
       </div>
-      <ScrollArea className="flex-1 w-full">
+      <div className="flex-1 w-full overflow-auto">
         <div className="p-2 text-sm">
           {tree.data && (
             <FolderTree
@@ -156,7 +156,7 @@ export default function FileExplorer() {
             />
           )}
         </div>
-      </ScrollArea>
+      </div>
     </div>
   );
 }
