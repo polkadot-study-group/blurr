@@ -31,7 +31,7 @@ export async function getFilesRecursive(): Promise<NodeData | null> {
 
 export async function getFile(file: string): Promise<string | null> {
   try {
-    const res = await fetch(api_url + "/api/cli/file/open/" + file, {
+    const res = await fetch(api_url + "/api/cli/file/open" + file, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export async function getFile(file: string): Promise<string | null> {
       return null;
     }
 
-    const data = await res.json();
+    const data = await res.text();
     return data;
   } catch (err) {
     console.error("Error while fetching file:", err || "Something went wrong");

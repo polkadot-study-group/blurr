@@ -19,10 +19,10 @@ export const workspaceTabSlice = createSlice({
     setTabs: (state, action) => {
       state.value = action.payload;
     },
-    setActive: (state, action) => {
+    setActive: (state, action: { payload: WorkspaceTabModel }) => {
       state.active = action.payload;
     },
-    addTab: (state, action) => {
+    addTab: (state, action: { payload: WorkspaceTabModel }) => {
       state.value.push(action.payload);
     },
     removeTab: (state, action) => {

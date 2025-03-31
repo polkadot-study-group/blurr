@@ -10,12 +10,14 @@ import { NodeData } from "react-folder-tree";
 import "react-folder-tree/dist/style.css";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
-import { getFilesRecursive } from "@/services/file.service";
+import { getFile, getFilesRecursive } from "@/services/file.service";
 import { setTree } from "@/store/directory-tree";
 import { File, Folder, FolderOpen, TrashIcon } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { useDispatch } from "react-redux";
+import { addTab, setActive } from "@/store/workspace-tab";
+import { WorkspaceTabModel } from "@/models/workspace-tabs.model";
 
 const FolderTree = dynamic(() => import("react-folder-tree"), { ssr: false });
 
@@ -45,12 +47,26 @@ export default function FileExplorer() {
     nodeData,
   }: TreeEventProps) => {
     defaultOnClick();
-    console.log(nodeData);
+    if (!nodeData.is_dir) {
+      console.log("test", nodeData);
+      //TODO: check if tab with the same key already exsist
+      getFile(nodeData.url).then((data: string | null) => {
+        const newTab: WorkspaceTabModel = {
+          key: nodeData._id,
+          label: nodeData.name,
+          is_new: false,
+          type: "file",
+          content: data || "",
+        };
+
+        dispatch(addTab(newTab));
+        dispatch(setActive(newTab));
+      });
+    }
   };
 
   const FolderIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
     const { path, name, checked, isOpen, ...restData } = nodeData;
-    console.log(path, name, checked, isOpen, restData);
     const handleClick = () => {
       defaultOnClick();
     };
@@ -60,7 +76,6 @@ export default function FileExplorer() {
 
   const FolderOpenIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
     const { path, name, checked, isOpen, ...restData } = nodeData;
-    console.log(path, name, checked, isOpen, restData);
     const handleClick = () => {
       // doSthBad({ path, name, checked, isOpen, ...restData });
       defaultOnClick();
@@ -71,7 +86,6 @@ export default function FileExplorer() {
 
   const FileIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
     const { path, name, checked, isOpen, ...restData } = nodeData;
-    console.log(path, name, checked, isOpen, restData);
     const handleClick = () => {
       defaultOnClick();
     };
@@ -92,10 +106,9 @@ export default function FileExplorer() {
 
   const DeleteIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
     const { path, name, checked, isOpen, ...restData } = nodeData;
-    console.log(path, name, checked, isOpen, restData);
     // @ts-expect-error: acept any type for e args
     const handleClick = (e) => {
-      console.log(e, nodeData);
+      // console.log(e, nodeData);
       alert("delete icon clicked");
       defaultOnClick();
     };
@@ -105,7 +118,6 @@ export default function FileExplorer() {
 
   // const CancelIcon = ({ defaultOnClick, nodeData }: TreeEventProps) => {
   //   const { path, name, checked, isOpen, ...restData } = nodeData;
-  //   console.log(path, name, checked, isOpen, restData);
   //   const handleClick = () => {
   //     alert("Cancel icon clicked");
   //     defaultOnClick();
