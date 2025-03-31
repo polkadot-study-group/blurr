@@ -71,6 +71,8 @@ export default function FileExplorer() {
       defaultOnClick();
     };
 
+    console.log("test", { path, name, checked, isOpen, ...restData });
+
     return <Folder className="size-4" onClick={handleClick} />;
   };
 
@@ -81,6 +83,8 @@ export default function FileExplorer() {
       defaultOnClick();
     };
 
+    console.log("test", { path, name, checked, isOpen, ...restData });
+
     return <FolderOpen className="size-4" onClick={handleClick} />;
   };
 
@@ -89,6 +93,8 @@ export default function FileExplorer() {
     const handleClick = () => {
       defaultOnClick();
     };
+
+    console.log("test", { path, name, checked, isOpen, ...restData });
 
     return <File className="size-4" onClick={handleClick} />;
   };
@@ -108,10 +114,12 @@ export default function FileExplorer() {
     const { path, name, checked, isOpen, ...restData } = nodeData;
     // @ts-expect-error: acept any type for e args
     const handleClick = (e) => {
-      // console.log(e, nodeData);
+      console.log(e);
       alert("delete icon clicked");
       defaultOnClick();
     };
+
+    console.log("test", { path, name, checked, isOpen, ...restData });
 
     return <TrashIcon className="size-4" onClick={handleClick} />;
   };
