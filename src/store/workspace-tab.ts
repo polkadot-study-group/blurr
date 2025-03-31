@@ -25,7 +25,12 @@ export const workspaceTabSlice = createSlice({
     addTab: (state, action: { payload: WorkspaceTabModel }) => {
       state.value.push(action.payload);
     },
-    removeTab: (state, action) => {
+    removeTab: (state, action: { payload: number }) => {
+      // set previous tabs active
+      const be_removed_index = action.payload - 1;
+      if (be_removed_index > -1) {
+        state.active = state.value[be_removed_index];
+      }
       state.value.splice(action.payload, 1);
     },
   },
